@@ -1,0 +1,15 @@
+//https://practice.geeksforgeeks.org/problems/check-for-bst/1
+
+
+
+bool isBST(Node* root) 
+    {
+        // Your code here
+        return (isBSTUtil(root, INT_MIN, INT_MAX));
+    }
+    
+    bool isBSTUtil(Node* node, int min, int max) {
+        if(node == NULL) return true;
+        if(node->data < min || node->data > max) return false;
+        return isBSTUtil(node->left, min, node->data - 1) && isBSTUtil(node->right, node->data + 1, max);
+    }
